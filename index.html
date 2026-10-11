@@ -1,0 +1,1892 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AuriLearn</title>
+    <style>
+        :root {
+            --t: #0d9f95;
+            --n: #0d172d;
+            --b: #f5f8fa;
+            --m: #647187;
+            --l: #dfe7ee;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #142038;
+            background: var(--b);
+        }
+
+        button, input, textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .nav {
+            height: 64px;
+            background: #fff;
+            border-bottom: 1px solid #e8edf1;
+            display: flex;
+            align-items: center;
+            padding: 0 44px;
+            gap: 28px;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+        }
+
+        .logo {
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: var(--t);
+            color: #fff;
+            display: grid;
+            place-items: center;
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 28px;
+            margin: auto;
+            font-size: 12px;
+        }
+
+        .navlinks a {
+            padding: 23px 0;
+            cursor: pointer;
+        }
+
+        .navlinks .active {
+            color: var(--t);
+            border-bottom: 2px solid var(--t);
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 8px;
+            padding: 11px 18px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .primary {
+            background: var(--t);
+            color: #fff;
+        }
+
+        .light {
+            background: #fff;
+            border: 1px solid var(--l);
+        }
+
+        main {
+            min-height: calc(100vh - 64px);
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: auto;
+            padding: 38px 5%;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 55px;
+            align-items: center;
+            min-height: 430px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #dff7f4;
+            color: #078d84;
+            border-radius: 30px;
+            padding: 6px 11px;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            line-height: 1.08;
+            margin: 18px 0 14px;
+        }
+
+        .hero p, .sub {
+            color: var(--m);
+            line-height: 1.7;
+            font-size: 16px; /* Changed from 12px */
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0 28px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 45px;
+        }
+
+        .stat b {
+            display: block;
+            color: var(--t);
+            font-size: 18px;
+        }
+
+        .stat span {
+            font-size: 12px; /* Changed from 9px */
+            color: var(--m);
+        }
+
+        .ear-card, .card {
+            background: #fff;
+            border: 1px solid #e4eaf0;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .ear-card {
+            box-shadow: 0 7px 24px #17334d12;
+            display: grid;
+            place-items: center;
+        }
+
+        .ear-frame {
+            width: 360px;
+            height: 310px;
+            background: #eef1f2;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .ear-frame img, .learn-img img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .section {
+            padding: 42px 5%;
+            background: #f8fafb;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .feature {
+            background: #fff;
+            border: 1px solid #e9eef2;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: left;
+        }
+
+        .feature h3 {
+            font-size: 13px;
+        }
+
+        .feature p, .card p {
+            font-size: 14px; /* Changed from 10px */
+            color: var(--m);
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: var(--n);
+            color: #dce3ef;
+            padding: 40px 5% 22px;
+        }
+
+        .footgrid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer p, .footer li {
+            font-size: 13px; /* Changed from 9px */
+            color: #9aa8bc;
+            line-height: 1.6;
+        }
+
+        .copyright {
+            max-width: 1200px;
+            margin: 25px auto 0;
+            border-top: 1px solid #26324a;
+            padding-top: 16px;
+            font-size: 8px;
+            color: #75839a;
+        }
+
+        .auth {
+            min-height: calc(100vh - 64px);
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #eafaff, #f4fbff);
+            padding: 40px;
+        }
+
+        .authcard {
+            width: 430px;
+            background: #fff;
+            border-radius: 22px;
+            padding: 34px;
+            box-shadow: 0 12px 35px #1d435b16;
+        }
+
+        .authcard h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .authlogo {
+            justify-content: center;
+        }
+
+        .field {
+            margin: 15px 0;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .field input, .field textarea {
+            width: 100%;
+            border: 1px solid var(--l);
+            border-radius: 8px;
+            padding: 11px;
+            background: #fbfcfd;
+        }
+
+        .full {
+            width: 100%;
+        }
+
+        .divider {
+            text-align: center;
+            border-top: 1px solid var(--l);
+            padding-top: 18px;
+            margin-top: 18px;
+            font-size: 10px;
+        }
+
+        .link {
+            color: var(--t);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .dash {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 20px;
+        }
+
+        .progress {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .ring {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(var(--t) 68%, #e5ebef 0);
+            display: grid;
+            place-items: center;
+        }
+
+        .ring:after {
+            content: '68%';
+            width: 62px;
+            height: 62px;
+            background: #fff;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+        }
+
+        .dark {
+            background: var(--n);
+            color: #fff;
+        }
+
+        .quick {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .quick .card {
+            cursor: pointer;
+        }
+
+        .learn {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 20px;
+        }
+
+        .learn-img {
+            min-height: 470px;
+            background: #f6f8f9;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+        }
+
+        .learn-img img {
+            max-width: 80%;
+            max-height: 420px;
+        }
+
+        .info {
+            border-top: 1px solid var(--l);
+            padding: 13px 0;
+            font-size: 15px; /* Changed from 11px */
+            line-height: 1.6;
+        }
+
+        .label {
+            font-size: 12px; /* Changed from 9px */
+            font-weight: 800;
+            color: #718096;
+        }
+
+        .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 20px;
+        }
+
+        .head h1 {
+            font-size: 25px;
+            margin: 0;
+        }
+
+        .search {
+            border: 1px solid var(--l);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .dlist {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .disease {
+            background: #fff;
+            border: 1px solid var(--l);
+            border-radius: 12px;
+            padding: 17px;
+        }
+
+        .disease h3 {
+            font-size: 12px;
+        }
+
+        .chip {
+            font-size: 8px;
+            background: #f0f4f7;
+            border-radius: 20px;
+            padding: 5px 8px;
+        }
+
+        .quizopts {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            text-align: left;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid var(--l);
+            border-radius: 10px;
+        }
+
+        .result {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .scorecard {
+            background: var(--n);
+            color: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .score {
+            font-size: 45px;
+            font-weight: 800;
+        }
+
+        .admin {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            min-height: calc(100vh - 64px);
+        }
+
+        .side {
+            background: var(--n);
+            color: #fff;
+            padding: 22px;
+        }
+
+        .side div {
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            color: #b9c4d5;
+            cursor: pointer;
+        }
+
+        .side .sel {
+            background: #123447;
+            color: #fff;
+        }
+
+        .adminmain {
+            padding: 30px 4%;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .metric {
+            background: #fff;
+            border: 1px solid var(--l);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .metric span {
+            font-size: 9px;
+            color: var(--m);
+        }
+
+        .metric b {
+            display: block;
+            font-size: 23px;
+            margin: 8px 0;
+        }
+
+        .editgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 10px 0;
+            border-bottom: 1px solid #edf1f4;
+            font-size: 10px;
+        }
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: var(--n);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 11px;
+            display: none;
+        }
+
+        .notes-box {
+            background: #f8fafb;
+            border: 1px solid var(--l);
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 14px;
+            color: var(--m);
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--l);
+        }
+        
+        .chip {
+            font-size: 11px; /* Increased font size as requested */
+            font-weight: 700;
+            background: #f0f4f7;
+            border-radius: 20px;
+            padding: 8px 12px; /* Increased padding as requested */
+            color: #142038;
+        }
+        
+        /* Add gap to the chip container */
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 850px) {
+            .hero, .dash, .learn, .result, .editgrid {
+                grid-template-columns: 1fr;
+            }
+
+            .features, .dlist, .metrics {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .quick {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footgrid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .navlinks {
+                display: flex;
+                gap: 28px;
+                margin: auto;
+                font-size: 15px; /* Changed from 12px */
+            }
+
+            .nav {
+                padding: 0 18px;
+            }
+        }
+
+        model-viewer {
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.Hotspot {
+    background: var(--t);
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+/* .Hotspot:not([data-visible]) {
+    background: transparent;
+    border: 2px solid transparent;
+    box-shadow: none;
+} */
+
+.Hotspot:hover {
+    transform: scale(1.3);
+}
+
+.HotspotAnnotation {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(23, 51, 77, 0.15);
+    color: var(--n);
+    display: none;
+    font-size: 11px;
+    font-weight: 700;
+    left: calc(100% + 8px);
+    padding: 6px 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.Hotspot:hover .HotspotAnnotation {
+    display: block;
+}
+/* Quiz Result Styles */
+        .quiz-ring-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 30px auto;
+        }
+        .quiz-ring {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(var(--t) var(--p, 0%), #1f2a40 0);
+            display: grid;
+            place-items: center;
+        }
+        .quiz-ring::after {
+            content: '';
+            width: 146px;
+            height: 146px;
+            background: var(--n);
+            border-radius: 50%;
+            position: absolute;
+        }
+        .quiz-ring-content {
+            position: absolute;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .quiz-ring-content .score {
+            font-size: 45px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .quiz-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            border-top: 1px solid #1f2a40;
+            padding-top: 25px;
+        }
+        .quiz-stat span {
+            display: block;
+            font-size: 10px;
+            color: #8c9bb0;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .quiz-stat b { font-size: 18px; color: #fff; }
+        .quiz-stat b.pass { color: var(--t); }
+
+        .scorecard-actions {
+            display: flex;
+            gap: 15px;
+        }
+        .scorecard-actions .btn { flex: 1; }
+        .btn.dark-outline {
+            background: #1a2538;
+            color: #fff;
+            border: 1px solid #2d3b55;
+        }
+
+        .q-row {
+            display: flex;
+            align-items: center;
+            background: #f8fafb;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            gap: 15px;
+        }
+        .q-num {
+            background: #e6f7f5;
+            color: var(--t);
+            font-weight: 800;
+            font-size: 12px;
+            width: 26px;
+            height: 26px;
+            display: grid;
+            place-items: center;
+            border-radius: 6px;
+        }
+        .q-text {
+            flex: 1;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--n);
+            text-align: left;
+        }
+        .q-badge {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 12px;
+        }
+        .q-badge.correct { background: #dff7f4; color: #078d84; }
+        .q-badge.incorrect { background: #ffe7ea; color: #c43e52; }
+        .q-num.incorrect-num { background: #ffe7ea; color: #c43e52; }
+
+        /* Profile Styles */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+        .profile-sidebar {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px 0;
+            border: 1px solid var(--l);
+            align-self: start;
+        }
+        .profile-nav-item {
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--m);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .profile-nav-item.active {
+            background: #e6f7f5;
+            color: var(--t);
+            border-right: 3px solid var(--t);
+        }
+        .profile-header-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        .avatar-wrapper {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #eef1f2;
+            cursor: pointer;
+            border: 2px solid var(--t);
+            display: grid;
+            place-items: center;
+        }
+        .avatar-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .avatar-upload-input { display: none; }
+        
+        .nav-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #eef1f2;
+            display: grid;
+            place-items: center;
+            color: var(--m);
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+        .nav-user:hover { background: #f5f8fa; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        
+        /* Toggle Switch */
+        .switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--t); }
+        input:checked + .slider:before { transform: translateX(18px); }
+    </style>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="toast" class="toast"></div>
+
+    <script>
+        const K = 'aurilearn_fast_v7'; // Changed to v4 to load new data
+        // Initialize an empty database structure
+        let db = JSON.parse(localStorage.getItem(K)) || {
+            user: null,
+            progress: 0,
+            currentPointIndex: 0,
+            points: [],
+            diseases: [],
+            quizzes: []
+        };
+        let qi = 0, qs = 0, userAnswers = [];
+
+        function save() {
+            localStorage.setItem(K, JSON.stringify(db));
+        }
+
+        function go(p) {
+            location.hash = p;
+            render();
+        }
+
+        function toast(s) {
+            let t = document.getElementById('toast');
+            t.textContent = s;
+            t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 1600);
+        }
+        // 1. Add 'showOnlyPoint' inside the parentheses
+        function ear(showOnlyPoint = null) {
+            // 2. Wrap your entire existing backtick string in a variable called 'modelHtml'
+            let modelHtml = `
+            
+    <model-viewer src="EAR_MODEL2.glb" camera-controls auto-rotate interaction-prompt="none" tone-mapping="neutral" shadow-intensity="1">
+    
+    <button class="Hotspot" slot="hotspot-2" data-position="6.650951928057558m 10.781284656623363m 0.9471437128762996m"             data-normal="-0.22246373699762548m 0.29270164486157957m 0.9299653933434174m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Shen Men</div>
+    </button><button class="Hotspot" slot="hotspot-4" data-position="-5.12519011745081m -1.8011960652383978m 1.8626917554997102m"   data-normal="-0.12308802204654565m 0.18129761558090404m 0.975694887458855m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Stomach</div>
+    </button><button class="Hotspot" slot="hotspot-5" data-position="-2.089809925656626m -3.678609691415565m -5.887525140853087m"   data-normal="-0.34467826720829514m 0.40429151482394654m 0.8471984791981427m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Endocrine</div>
+    </button><button class="Hotspot" slot="hotspot-6" data-position="6.728867011367942m -1.1618193659081442m -0.7333406477538207m"  data-normal="-0.5155725292851558m 0.28869940299914376m 0.8067450785436779m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Spleen</div>
+    </button><button class="Hotspot" slot="hotspot-7" data-position="5.212104042680796m 0.14009978679982105m -1.0150395806132764m"  data-normal="0.18478402663201043m -0.30023319357282124m 0.9357963950447369m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Hunger</div>
+    </button><button class="Hotspot" slot="hotspot-8" data-position="1.18175919898394m -1.8551337676278867m -4.57484336999002m"     data-normal="-0.6687198983326462m 0.21487885255924655m 0.7117870301549454m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Heart</div>
+    </button><button class="Hotspot" slot="hotspot-9" data-position="-0.5487935184927792m 14.378987507017737m 3.1828365445195206m"  data-normal="-0.15488569213743417m -0.06108175470880164m 0.9860423122832012m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Sympathetic</div>
+    </button><button class="Hotspot" slot="hotspot-10" data-position="-2.5267994475554403m -2.621913155652008m 1.3840663783889933m" data-normal="0.7590217515514648m -0.5741684325852138m 0.30694721320511303m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Brain</div>
+    </button><button class="Hotspot" slot="hotspot-11" data-position="7.041382294817967m 0.7209033564095959m -0.9689075164288568m"  data-normal="-0.42169668107683184m 0.11378862487220491m 0.8995688178335649m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Liver</div>
+    </button><button class="Hotspot" slot="hotspot-12" data-position="-4.15311211919441m -1.1512107022781735m 1.868614545553484m"   data-normal="-0.056752762733389694m 0.08527134985842899m 0.9947401272771945m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Forehead / Temple</div>
+    </button><button class="Hotspot" slot="hotspot-13" data-position="-4.731442494364327m -3.7897103766517506m 2.2285453500437877m" data-normal="0.10713349123184616m 0.1089855225159177m 0.9882532929054214m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Subcortex</div>
+    </button><button class="Hotspot" slot="hotspot-14" data-position="-4.2599096969945185m 0.4022992626094175m 1.774781821669393m"  data-normal="-0.21693044972148004m 0.017210169423241637m 0.9760353426244667m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Occiput</div>
+    </button><button class="Hotspot" slot="hotspot-15" data-position="7.236405892707412m 19.85213121503943m 3.8650662154218525m"    data-normal="-0.022994788293397735m 0.4359831314526773m 0.8996610188287917m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Ear Apex</div>
+    </button><button class="Hotspot" slot="hotspot-16" data-position="-3.561467694837712m -4.8527336279056215m -5.557766192865629m" data-normal="0.06036441167008502m 0.6200299531868497m 0.7822525135497089m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Thyroid Gland</div>
+    </button><button class="Hotspot" slot="hotspot-17" data-position="3.236942474437349m 10.40368119569926m 1.123351314145682m"     data-normal="-0.08412784807026463m 0.27182822553407904m 0.9586615257649909m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Sciatic Nerve</div>
+    </button><button class="Hotspot" slot="hotspot-18" data-position="-4.055608138566339m -2.3442376202689963m 2.0044409739229954m" data-normal="0.06362249650301274m 0.10491138636629757m 0.9924443455173825m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Adrenal</div>
+    </button><button class="Hotspot" slot="hotspot-19" data-position="5.818843766619615m 5.210611520004106m -1.376507699113431m"    data-normal="-0.23659205610763426m -0.13677430205345814m 0.9619339838494904m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Kidney</div>
+    </button><button class="Hotspot" slot="hotspot-20" data-position="0.9805374987128879m 7.25892644394046m -0.7625110549456676m"   data-normal="0.5632549399155926m 0.33265515766591075m 0.7563626238378984m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Large Intestine</div>
+    </button><button class="Hotspot" slot="hotspot-21" data-position="-0.9098244953783667m 6.279425750034283m 2.1589545758745188m"  data-normal="-0.13826653852223048m -0.19441916046082455m 0.9711248912322188m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Rectum</div>
+    </button><button class="Hotspot" slot="hotspot-23" data-position="3.9288079118356047m 13.32442287967116m 0.0016140760492818484m" data-normal="-0.06194949189115737m 0.2183397931371709m 0.9739045103023422m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Uterus</div>
+    </button><button class="Hotspot" slot="hotspot-24" data-position="0.9548651599860083m 13.293499936040067m -0.2392840231630342m" data-normal="-0.1086497301187589m 0.21411957352682098m 0.9707461276656288m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Ovary</div>
+    </button><button class="Hotspot" slot="hotspot-25" data-position="0.34441203917700314m 12.050205865525953m 0.07287032381759939m" data-normal="-0.22199658554853902m 0.43571392328605213m 0.8722791371226682m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Heel</div>
+    </button><button class="Hotspot" slot="hotspot-26" data-position="4.890864082326666m 16.163945062624634m -0.06165758154314105m" data-normal="-0.10095111666298645m -0.05346928048666923m 0.9934535258826828m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Ankle</div>
+    </button><button class="Hotspot" slot="hotspot-27" data-position="5.863856309681546m -5.17967489109061m 2.1995296933316397m"    data-normal="0.023769507282996382m -0.16766746073848918m 0.9855570166829675m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Asthma</div>
+    </button><button class="Hotspot" slot="hotspot-28" data-position="1.5680549193555642m -0.8600674062396727m -4.323131694928058m" data-normal="-0.728797051530647m -0.07436932883251146m 0.6806791172125362m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Lung</div>
+    </button><button class="Hotspot" slot="hotspot-29" data-position="-0.3330548895124017m -0.17483044338031584m -5.923709831840426m" data-normal="-0.47147693254118095m -0.09121238510545007m 0.8771486777536258m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Trachea</div>
+    </button><button class="Hotspot" slot="hotspot-30" data-position="3.236942m 12.403681m 1.123351m" data-normal="-0.084127m 0.271828m 0.958661m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Lumbar Spine</div>
+    </button>
+    
+</model-viewer>`;
+// 3. Add this new logic right after the closing backtick/semicolon:
+// If we didn't specify a point (like on the Home page), return the full model
+    if (!showOnlyPoint) {
+        return modelHtml;
+    }
+
+    // If we did specify a point (like on the Learning page), filter out the others
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = modelHtml;
+    
+    tempDiv.querySelectorAll('.Hotspot').forEach(button => {
+        // If the text inside the button doesn't match the specific point, remove it completely
+        if (button.textContent.trim() !== showOnlyPoint) {
+            button.remove(); 
+        }
+    });
+
+    return tempDiv.innerHTML;
+}
+
+
+
+        function nav(a, guest = false) {
+            return `<header class="nav">
+                <a class="logo" onclick="go('home')">
+                    <span class="mark">◉</span>AuriLearn
+                </a>
+                <nav class="navlinks">
+                    ${guest ? '' : [['home', 'Home'], ['learning', 'Learning'], ['diseases', 'Diseases'], ['quiz', 'Quiz'], ['about', 'About']]
+                        .map(x => `<a class="${a == x[0] ? 'active' : ''}" onclick="go('${x[0]}')">${x[1]}</a>`)
+                        .join('')}
+                </nav>
+                <div class="nav-user" onclick="${guest ? '' : `go('profile')`}">
+                    ${guest ? '' : `
+                        ${db.user?.avatar ? `<img src="${db.user.avatar}" class="nav-avatar">` : `<div class="nav-avatar">${db.user?.name ? db.user.name.charAt(0) : 'S'}</div>`}
+                        <span style="font-size:12px; font-weight:700;">${db.user?.name || 'Sarah Chen'} ⌄</span>
+                    `}
+                </div>
+            </header>`;
+        }
+
+        function foot() {
+            return `<footer class="footer">
+                <div class="footgrid">
+                    <div>
+                        <div class="logo">
+                            <span class="mark">◉</span>AuriLearn
+                        </div>
+                        <p>An interactive educational platform for learning about ear acupuncture points through visual exploration and self-assessment.</p>
+                    </div>
+                    <div>
+                        <b style="font-size:10px">Curriculum</b>
+                        <p>Ear Acupuncture Basics<br>Ear Acupuncture Points<br>Health Topics<br>Quiz</p>
+                    </div>
+                    <div>
+                        <b style="font-size:10px">Resources</b>
+                        <p>Learning Guide<br>About AuriLearn<br>References</p>
+                    </div>
+                    <div>
+                        <b style="font-size:10px">Contact</b>
+                        <p>For questions or feedback, contact the project administrator.</p>
+                    </div>
+                </div>
+                <div class="copyright">© 2026 AuriLearn. Educational Purpose Only: not intended to provide medical diagnosis or treatment advice.</div>
+            </footer>`;
+        }
+        // <button class="btn light" onclick="go('diseases')">Explore Maps</button>
+
+        function home() {
+            return nav('home', true) + `
+            <main>
+                <section class="page">
+                    <div class="hero">
+                        <div>
+                            <span class="badge">◉ INTERACTIVE AURICULAR LEARNING</span>
+                            <h1>Learn Ear Acupuncture Through Interactive Visualization</h1>
+                            <p>AuriLearn is an interactive educational platform designed to help users explore and learn about ear acupuncture points through visual learning, study materials, and self-assessment activities.</p>
+                            <div class=" actions" style="align-items: center; gap: 15px;">
+                                ${!db.user ? `
+                                    <a onclick="go('login')" style="cursor: pointer; text-decoration: underline; font-size: 13px; font-weight: 700; color: #142038;">Sign In</a>
+                                    <button class="btn primary" onclick="go('register')">Register</button>
+                                ` : `
+                                    <button class="btn primary" onclick="go('dashboard')">Go to Dashboard</button>
+                                `}
+                                
+                            </div>
+                            <div class="stats">
+                                <div class="stat">
+                                    <b>28</b><span>Ear Acupuncture Points</span>
+                                </div>
+                                <div class="stat">
+                                    <b>10</b><span>Health Topics</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ear-card">
+                            <div class="ear-frame">${ear()}</div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <span class="badge">HOW AURILEARN WORKS</span>
+                    <h2>Engaging tools designed for interactive learning</h2>
+                    <div class="features">
+                        <div class="feature">
+                            <h3>Interactive Learning</h3>
+                            <p>Explore ear acupuncture points through structured visual learning material.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Self-Assessment Quiz</h3>
+                            <p>Test your understanding through short quizzes based on the learning content.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Progress Tracking</h3>
+                            <p>Track completed learning content and review your learning progress.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>${foot()}`;
+        }
+
+        function auth(reg) {
+            return `
+            <div class="auth">
+                <div class="authcard">
+                    <div class="logo authlogo">
+                        <span class="mark">◉</span>AuriLearn
+                    </div>
+                    <h1>${reg ? 'Create Your Account' : 'Welcome Back'}</h1>
+                    <p class="sub">${reg ? 'Create an account to start your learning journey' : 'Continue your ear acupuncture learning'}</p>
+                    <form onsubmit="event.preventDefault(); ${reg ? 'register()' : 'login()'}">
+                        ${reg ? `
+                            <div class="field">
+                                <label>Full Name</label>
+                                <input id="name" required>
+                            </div>
+                            <div class="field">
+                                <label>Username</label>
+                                <input id="username" required>
+                            </div>` : ''}
+                        <div class="field">
+                            <label>Email Address</label>
+                            <input id="email" type="email" required>
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input id="pass" type="password" required>
+                        </div>
+                        ${reg ? `
+                            <div class="field">
+                                <label>Confirm Password</label>
+                                <input id="confirm" type="password" required>
+                            </div>` : `
+                            <div style="text-align:right;font-size:10px;color:var(--t)">Forgot Password?</div>`}
+                        <button class="btn primary full" style="margin-top:15px">${reg ? 'Create Account' : 'Sign In'}</button>
+                    </form>
+                    <div class="divider">
+                        ${reg ? 'Already have an account? ' : 'Don\'t have an account? '}
+                        <span class="link" onclick="go('${reg ? 'login' : 'register'}')">${reg ? 'Log In' : 'Sign Up Free'}</span>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function login() {
+            db.user = { 
+                name: 'Sarah Chen', 
+                email: document.getElementById('email').value 
+            };
+            save();
+            go('dashboard');
+        }
+
+        function register() {
+            let p = document.getElementById('pass').value,
+                c = document.getElementById('confirm').value;
+                
+            if (p != c) return toast('Passwords do not match');
+            
+            db.user = { 
+                name: document.getElementById('name').value, 
+                email: document.getElementById('email').value 
+            };
+            save();
+            go('dashboard');
+        }
+
+        function dashboard() {
+            return nav('dashboard') + `
+            <main class="page">
+                <h1 style="font-size:24px;margin:0">Welcome back, ${db.user?.name || 'Sarah'}!</h1>
+                <p class="sub">Keep learning and continue exploring ear acupuncture points!</p>
+                <div class="dash">
+                    <div class="card">
+                        <b>Learning Progress</b>
+                        <div class="progress">
+                            <div class="ring"></div>
+                            <div>
+                                <b>${db.progress} / ${db.points.length}</b>
+                                <p>Ear acupuncture points completed.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card dark">
+                        <span style="color:#22c5b8;font-size:9px">LAST LEARNING SESSION</span>
+                        <h3>Shen Men</h3>
+                        <p style="color:#b4bfd0">Continue exploring the learning material.</p>
+                        <button class="btn primary" onclick="go('learning')">Start Learning →</button>
+                    </div>
+                </div>
+                <h3 style="font-size:13px;margin-top:25px">Quick Actions</h3>
+                <div class="quick">
+                    <div class="card" onclick="go('learning')">
+                        ♙ <b>Learning</b>
+                        <p>28 Ear Acupuncture Points</p>
+                    </div>
+                    <div class="card" onclick="go('diseases')">
+                        ⌁ <b>Diseases</b>
+                        <p>Explore Related Points</p>
+                    </div>
+                    <div class="card" onclick="go('quiz')">
+                        ♙ <b>Quiz</b>
+                        <p>Test Your Knowledge</p>
+                    </div>
+                    <div class="card" onclick="go('progress')">
+                        ↗ <b>Progress</b>
+                        <p>View Learning Progress</p>
+                    </div>
+                </div>
+            </main>${foot()}`;
+        }
+
+        function learning() {
+            // Get the current point based on the index in our database
+            let idx = db.currentPointIndex || 0;
+            let p = db.points[idx];
+            
+            // Safety check in case other points haven't been updated to the new format yet
+            let name = p[0];
+            let location = p[1];
+            let functionDesc = p[2];
+            let diseases = Array.isArray(p[3]) ? p[3] : ['Weight Loss', 'Stress', 'Insomnia']; // Fallback
+            let notes = p[4] || 'No notes added yet.'; // Fallback
+
+            return nav('learning') + `
+            <main class="page">
+                <div class="learn">
+                    <div class="card">
+                        <span class="badge">EAR ACUPUNCTURE POINT EXPLORER</span>
+                        <h3 style="margin-top:10px;">Explore Ear Acupuncture Points</h3>
+                        <div class="learn-img">${ear(name.split(' (')[0])}</div>
+                    </div>
+                    <div class="card">
+                        <h1 style="font-size:28px; margin: 0 0 5px 0;">${name}</h1>
+                        ${name.includes('Shen Men') 
+                            ? `<p style="color:var(--m); font-size:14px; margin-top:0; border-bottom: 1px solid var(--l); padding-bottom: 20px;">Divine Gate / Spirit Gate</p>` 
+                            : `<div style="padding-bottom: 20px; border-bottom: 1px solid var(--l); margin-bottom: 5px;"></div>`
+                        }
+                        <div class="info" style="border:none;">
+                            <span class="label">LOCATION</span><br>
+                            <div style="font-size: 15px; margin-top: 8px;">${location}</div>
+                        </div>
+                        <div class="info" style="border:none;">
+                            <span class="label">PRIMARY REFLEX FUNCTION</span><br>
+                            <div style="font-size: 15px; margin-top: 8px;">${functionDesc}</div>
+                        </div>
+                        <div class="info" style="border:none;">
+                            <span class="label">RELATED DISEASES</span><br>
+                            <div class="chip-container">
+                                ${diseases.map(d => `<span class="chip">${d}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="info" style="border:none;">
+                            <span class="label">STUDENT LEARNING NOTES</span><br>
+                            <div class="notes-box">${notes}</div>
+                        </div>
+                        <div class="pagination">
+                            <button class="btn" style="background:#f5f8fa; color:#142038;" onclick="changePoint(-1)" ${idx === 0 ? 'disabled style="opacity:0.5;"' : ''}>← Prev Point</button>
+                            
+                            ${idx === db.points.length - 1 
+                                ? `<button class="btn primary" onclick="go('diseases')">Go to Diseases →</button>`
+                                : `<button class="btn primary" onclick="changePoint(1)">Next Point →</button>`
+                            }
+                        </div>
+                    </div>
+                </div>
+            </main>${foot()}`;
+        }
+
+        function changePoint(direction) {
+            let newIndex = (db.currentPointIndex || 0) + direction;
+            
+            // Check boundaries
+            if (newIndex >= 0 && newIndex < db.points.length) {
+                db.currentPointIndex = newIndex;
+                
+                // Optional: Update progress if they haven't seen this point before
+                if (newIndex + 1 > db.progress) {
+                    db.progress = newIndex + 1;
+                }
+                
+                save();
+                render(); // Reload the page with the new point
+            }
+        }
+
+        function diseases() {
+            return nav('diseases') + `
+            <main class="page">
+                <div class="head">
+                    <div>
+                        <h1>Disease Information</h1>
+                        <p>Explore health topics and the ear acupuncture points included for educational study.</p>
+                    </div>
+                    <input class="search" placeholder="Search diseases, points..." oninput="fd(this.value)">
+                </div>
+                <div id="dl" class="dlist">
+                    ${db.diseases.map((d, i) => `
+                    <div class="disease">
+                        <span class="chip">${d[1].length} Points</span>
+                        <h3>${d[0]}</h3>
+                        <!-- Replace the hardcoded string with d[2] -->
+                        <p>${d[2]}</p>
+                        <a class="link" onclick="showD(${i})">Learn More →</a>
+                    </div>`).join('')}
+                </div>
+            </main>${foot()}`;
+        }
+
+        function fd(v) {
+            document.querySelectorAll('.disease').forEach(x => {
+                x.style.display = x.textContent.toLowerCase().includes(v.toLowerCase()) ? 'block' : 'none';
+            });
+        }
+
+        function showD(i) {
+            let d = db.diseases[i];
+            alert(d[0] + '\n\nAssociated points:\n' + d[1].map(x => db.points[x]?.[0] || '').join(', '));
+        }
+
+        function quiz() {
+            let q = db.quizzes[qi % db.quizzes.length];
+            return nav('quiz') + `
+            <main class="page">
+                <div class="card">
+                    <div class="head">
+                        <span class="badge">SELF-ASSESSMENT QUIZ</span>
+                        <span>${qi + 1} / ${db.quizzes.length}</span>
+                    </div>
+                    <h1 style="font-size:22px">${q.q}</h1>
+                    <div class="quizopts">
+                        ${q.o.map((x, i) => `<button class="option" onclick="ans(${i})">${String.fromCharCode(65 + i)} &nbsp; ${x}</button>`).join('')}
+                    </div>
+                </div>
+            </main>${foot()}`;
+        }
+
+        function ans(i) {
+            userAnswers.push(i); // Track the user's choice
+            
+            if (i === db.quizzes[qi % db.quizzes.length].a) qs++;
+            qi++;
+            
+            if (qi >= db.quizzes.length) {
+                go('result');
+            } else {
+                render();
+            }
+        }
+
+        function result() {
+            let total = db.quizzes.length;
+            let pc = Math.round((qs / total) * 100);
+            
+            return nav('quiz') + `
+            <main class="page">
+                <div class="result">
+                    <div class="scorecard">
+                        <span class="badge" style="background:#1a2538; color:#0d9f95; border-radius:20px; padding: 6px 15px;">QUIZ ASSESSMENT COMPLETED</span>
+                        
+                        <div class="quiz-ring-container">
+                            <div class="quiz-ring" style="--p: ${pc}%"></div>
+                            <div class="quiz-ring-content">
+                                <div class="score">${pc}%</div>
+                                <span style="font-size: 11px; color: #aeb9ca;">${qs} / ${total} Correct</span>
+                            </div>
+                        </div>
+
+                        <h2>Great Job, ${db.user?.name.split(' ')[0] || 'Sarah'}!</h2>
+                        <p style="color:#aeb9ca; font-size: 14px;">Review your answers to identify topics that may need more study.</p>
+                        
+                        <div class="quiz-stats">
+                            <div class="quiz-stat">
+                                <span>TIME TAKEN</span>
+                                <b>05m 30s</b>
+                            </div>
+                            <div class="quiz-stat">
+                                <span>ASSESSMENT RESULT</span>
+                                <b class="pass">${pc}%</b>
+                            </div>
+                            <div class="quiz-stat">
+                                <span>PASS SCORE</span>
+                                <b class="pass">70%</b>
+                            </div>
+                        </div>
+
+                        <div class="scorecard-actions">
+                            <button class="btn primary" onclick="qi=0; qs=0; userAnswers=[]; go('quiz')">Retry Quiz</button>
+                            <button class="btn dark-outline" onclick="go('learning')">Review Answers</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 18px;">Questions Breakdown</h3>
+                        ${db.quizzes.map((q, i) => {
+                            let isCorrect = userAnswers[i] === q.a;
+                            return `
+                            <div class="q-row">
+                                <div class="q-num ${isCorrect ? '' : 'incorrect-num'}">${i + 1}</div>
+                                <div class="q-text">${q.q}</div>
+                                <div class="q-badge ${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'CORRECT' : 'INCORRECT'}</div>
+                            </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            </main>${foot()}`;
+        }
+
+        function progress() {
+            let pc = Math.round((db.progress / db.points.length) * 100);
+            return nav('progress') + `
+            <main class="page">
+                <div class="head">
+                    <div>
+                        <h1>Your Academic Progress</h1>
+                        <p>Track your learning progress across ear acupuncture points and self-assessment activities.</p>
+                    </div>
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <span>POINTS COVERED</span><b>${db.progress}/${db.points.length}</b>
+                    </div>
+                    <div class="metric">
+                        <span>QUIZZES COMPLETED</span><b>1</b>
+                    </div>
+                    <div class="metric">
+                        <span>CURRICULUM SCOPE</span><b>28 Points</b>
+                    </div>
+                    <div class="metric">
+                        <span>LATEST QUIZ</span><b>${Math.round((qs / db.quizzes.length) * 100) || 0}%</b>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:18px">
+                    <b>Overall Curriculum Completion</b>
+                    <div style="height:8px;background:#e8edf1;border-radius:8px;margin-top:15px">
+                        <div style="width:${pc}%;height:100%;background:var(--t);border-radius:8px"></div>
+                    </div>
+                </div>
+            </main>${foot()}`;
+        }
+
+        function profile() {
+            // Ensure user object exists with defaults
+            let u = db.user || { name: 'Sarah Chen', email: 'sarah.chen@harmonyhealth.edu', phone: '', institution: '', bio: '', avatar: null, reminders: true };
+            
+            return nav('profile') + `
+            <div class="profile-layout">
+                <aside class="profile-sidebar">
+                    <div style="font-size: 10px; font-weight: 800; color: #aeb9ca; padding: 0 24px 10px;">NAVIGATION</div>
+                    <div class="profile-nav-item active">👤 My Profile</div>
+                    <div class="profile-nav-item">⚙️ Account Settings</div>
+                </aside>
+                <main>
+                    <div class="card profile-header-card">
+                        <label class="avatar-wrapper" title="Click to upload profile picture">
+                            ${u.avatar ? `<img src="${u.avatar}">` : `<span style="font-size:28px; color:var(--m); font-weight:bold;">${u.name.charAt(0)}</span>`}
+                            <input type="file" class="avatar-upload-input" accept="image/*" onchange="handleAvatar(event)">
+                        </label>
+                        <div>
+                            <h1 style="margin:0; font-size:24px; display:flex; align-items:center; gap:10px;">
+                                ${u.name} <span class="badge" style="font-size:9px; background:#dff7f4; color:var(--t);">Acupuncturist Student</span>
+                            </h1>
+                            <p style="margin:5px 0 0; font-size:13px; color:var(--m);">${u.email}</p>
+                            <p style="margin:5px 0 0; font-size:11px; color:#aeb9ca;">Member profile • Learning level: Beginner</p>
+                        </div>
+                    </div>
+
+                    <div class="metrics" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                        <div class="metric">
+                            <div style="display:flex; justify-content:space-between; align-items:center">
+                                <span>POINTS REVIEWED</span>
+                                <span class="badge" style="background:#dff7f4; color:var(--t);">Learning scope</span>
+                            </div>
+                            <b>${db.progress} / ${db.points.length}</b>
+                            <span>Getting Started</span>
+                        </div>
+                        <div class="metric">
+                            <div style="display:flex; justify-content:space-between; align-items:center">
+                                <span>QUIZZES COMPLETED</span>
+                                <span class="badge" style="background:#e4f0ff; color:#3b82f6;">Passed</span>
+                            </div>
+                            <b>${qs > 0 ? '1 Quiz' : '0 Quizzes'}</b>
+                            <span>${db.quizzes.length} points available</span>
+                        </div>
+                        <div class="metric">
+                            <div style="display:flex; justify-content:space-between; align-items:center">
+                                <span>AVERAGE SCORE</span>
+                                <span class="badge" style="background:#eaffec; color:#16a34a;">Learning consistency</span>
+                            </div>
+                            <b>${Math.round((qs / db.quizzes.length) * 100) || 0}%</b>
+                            <span>Self-Assessment Progress</span>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 20px;">
+                        <h3 style="margin-top:0">Personal Information</h3>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label>Full Name</label>
+                                <input id="p-name" value="${u.name}">
+                            </div>
+                            <div class="field">
+                                <label>Email Address</label>
+                                <input id="p-email" value="${u.email}">
+                            </div>
+                            <div class="field">
+                                <label>Phone Number</label>
+                                <input id="p-phone" placeholder="+1 (555) 234-5678" value="${u.phone || ''}">
+                            </div>
+                            <div class="field">
+                                <label>Training Institution</label>
+                                <input id="p-inst" placeholder="Harmony Springs Acupuncture College" value="${u.institution || ''}">
+                            </div>
+                            <div class="field" style="grid-column: span 2">
+                                <label>Professional Bio</label>
+                                <textarea id="p-bio" rows="3" placeholder="Currently preparing for my national acupuncture certification exam...">${u.bio || ''}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 20px;">
+                        <h3 style="margin-top:0">Security & Preferences</h3>
+                        <div class="form-grid" style="margin-bottom: 15px; border-bottom: 1px solid var(--l); padding-bottom: 15px;">
+                            <div class="field">
+                                <label>Change Password</label>
+                                <input type="password" placeholder="••••••••••••">
+                            </div>
+                            <div class="field">
+                                <label>Language selector</label>
+                                <select style="width:100%; border:1px solid var(--l); border-radius:8px; padding:11px; background:#fbfcfd;">
+                                    <option>English (US)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-row">
+                            <div>
+                                <b style="font-size:13px">Email Study Reminders</b>
+                                <p style="margin:5px 0 0; font-size:11px; color:var(--m);">Get notified when daily study tasks are waiting</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="p-remind" ${u.reminders !== false ? 'checked' : ''}>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div style="display:flex; justify-content:flex-end; gap:15px; margin-top:20px;">
+                            <button class="btn light" onclick="render()">Cancel</button>
+                            <button class="btn primary" onclick="saveProfile()">Save Changes</button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            ${foot()}`;
+        }
+
+        function handleAvatar(e) {
+            let file = e.target.files[0];
+            if (!file) return;
+            
+            let reader = new FileReader();
+            reader.onload = function(event) {
+                if (!db.user) db.user = { name: 'Sarah Chen' };
+                db.user.avatar = event.target.result; // Saves image data
+                save();
+                render(); // Immediately refresh page to show image
+                toast('Profile picture updated!');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveProfile() {
+            if (!db.user) db.user = {};
+            db.user.name = document.getElementById('p-name').value;
+            db.user.email = document.getElementById('p-email').value;
+            db.user.phone = document.getElementById('p-phone').value;
+            db.user.institution = document.getElementById('p-inst').value;
+            db.user.bio = document.getElementById('p-bio').value;
+            db.user.reminders = document.getElementById('p-remind').checked;
+            
+            save();
+            render();
+            toast('Profile saved successfully');
+        }
+
+        function about() {
+            return nav('about') + `
+            <main class="page">
+                <div class="card">
+                    <span class="badge">ABOUT AURILEARN</span>
+                    <h1 style="font-size:28px">About AuriLearn</h1>
+                    <p style="max-width:850px">AuriLearn is a university project that presents ear acupuncture information in an organized and visual learning format. The platform combines learning materials, disease-related point groupings and self-assessment quizzes to support independent study.</p>
+                    <h3>Educational Purpose</h3>
+                    <p>The platform is intended for educational purposes only. It does not provide medical diagnosis or treatment advice.</p>
+                </div>
+            </main>${foot()}`;
+        }
+
+        function admin() {
+            return `
+            <div class="admin">
+                <aside class="side">
+                    <div class="logo" style="color:#fff">
+                        <span class="mark">◉</span>AuriLearn Admin
+                    </div><br>
+                    <div class="sel">⌂ Dashboard Overview</div>
+                    <div>◈ Manage Ear Points</div>
+                    <div>⌁ Manage Diseases</div>
+                    <div>▣ Manage Learning Content</div>
+                    <div>☷ Manage Quiz Questions</div>
+                </aside>
+                <section class="adminmain">
+                    <div class="head">
+                        <div>
+                            <h1>System Dashboard</h1>
+                            <p>Manage educational content for the project.</p>
+                        </div>
+                        <button class="btn primary" onclick="addPoint()">+ Add New Point</button>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <span>EAR POINTS</span><b>${db.points.length}</b>
+                        </div>
+                        <div class="metric">
+                            <span>HEALTH TOPICS</span><b>${db.diseases.length}</b>
+                        </div>
+                        <div class="metric">
+                            <span>QUIZ QUESTIONS</span><b>${db.quizzes.length}</b>
+                        </div>
+                        <div class="metric">
+                            <span>USERS</span><b>${db.user ? 1 : 0}</b>
+                        </div>
+                    </div>
+                    <div class="editgrid">
+                        <div class="card">
+                            <h3>Manage Ear Acupuncture Points</h3>
+                            ${db.points.map((p, i) => `
+                            <div class="row">
+                                <span><b>${i + 1}. ${p[0]}</b><br>${p[1]}</span>
+                                <span>
+                                    <button class="btn light" style="padding:5px" onclick="ep(${i})">Edit</button>
+                                    <button class="btn" style="padding:5px;background:#ffe7ea;color:#c43e52" onclick="dp(${i})">Delete</button>
+                                </span>
+                            </div>`).join('')}
+                        </div>
+                        <div class="card">
+                            <h3>Manage Diseases</h3>
+                            ${db.diseases.map((d, i) => `
+                            <div class="row">
+                                <span><b>${d[0]}</b><br>${d[1].length} associated points</span>
+                                <button class="btn light" style="padding:5px" onclick="ed(${i})">Edit</button>
+                            </div>`).join('')}
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top:15px">
+                        <h3>Manage Quiz Questions</h3>
+                        ${db.quizzes.map((q, i) => `
+                        <div class="row">
+                            <span>${i + 1}.${q.q}</span>
+                            <button class="btn light" style="padding:5px" onclick="eq(${i})">Edit</button>
+                        </div>`).join('')}
+                        <button class="btn primary" onclick="aq()">+ Add Question</button>
+                    </div>
+                </section>
+            </div>`;
+        }
+
+        function addPoint() {
+            let n = prompt('Point name:');
+            if (!n) return;
+            
+            let l = prompt('Location:') || 'Not specified',
+                d = prompt('Educational description:') || '';
+                
+            db.points.push([n, l, d]);
+            save();
+            render();
+            toast('Point added');
+        }
+
+        function ep(i) {
+            let p = db.points[i],
+                n = prompt('Point name:', p[0]);
+                
+            if (n === null) return;
+            
+            db.points[i] = [
+                n, 
+                prompt('Location:', p[1]) ?? p[1], 
+                prompt('Description:', p[2]) ?? p[2]
+            ];
+            
+            save();
+            render();
+            toast('Point updated');
+        }
+
+        function dp(i) {
+            if (confirm('Delete this point?')) {
+                db.points.splice(i, 1);
+                save();
+                render();
+            }
+        }
+
+        function ed(i) {
+            let d = db.diseases[i],
+                n = prompt('Disease/topic name:', d[0]);
+                
+            if (n === null) return;
+            
+            db.diseases[i][0] = n;
+            save();
+            render();
+            toast('Disease updated');
+        }
+
+        function aq() {
+            let q = prompt('Question:');
+            if (!q) return;
+            
+            let o = [
+                prompt('Option A:'),
+                prompt('Option B:'),
+                prompt('Option C:'),
+                prompt('Option D:')
+            ];
+            
+            let a = (+prompt('Correct option: 1-4', '1') || 1) - 1;
+            
+            db.quizzes.push({ q, o, a });
+            save();
+            render();
+            toast('Question added');
+        }
+
+        function eq(i) {
+            let q = db.quizzes[i],
+                n = prompt('Question:', q.q);
+                
+            if (n === null) return;
+            
+            q.q = n;
+            save();
+            render();
+            toast('Question updated');
+        }
+
+        function render() {
+            let p = location.hash.slice(1) || 'home';
+            let h = p === 'home' ? home() :
+                    p === 'profile' ? profile() : // <-- Add this line here 
+                    p === 'login' ? auth(false) : 
+                    p === 'register' ? auth(true) : 
+                    p === 'dashboard' ? dashboard() : 
+                    p === 'learning' ? learning() : 
+                    p === 'diseases' ? diseases() : 
+                    p === 'quiz' ? quiz() : 
+                    p === 'result' ? result() : 
+                    p === 'progress' ? progress() : 
+                    p === 'about' ? about() : 
+                    p === 'admin' ? admin() : 
+                    home();
+                    
+            document.getElementById('app').innerHTML = h;
+        }
+
+        window.addEventListener('hashchange', render);
+        render();
+        // --- NEW CLOUD DATABASE CONNECTION ---
+        // async function fetchLivePoints() {
+        //     try {
+        //         const response = await fetch('http://localhost:3000/api/points');
+        //         const liveData = await response.json();
+                
+        //         console.log("SUCCESS! Here is the data from PostgreSQL:", liveData);
+        //         toast("Connected to PostgreSQL Database!");
+                
+        //         // --- THE MAGIC HAPPENS HERE ---
+        //         // 1. Overwrite your hardcoded array with the live database data
+        //         D = liveData; // (Note: If your array is named something else, change 'D' to match it)
+                
+        //         // 2. Force the website to refresh and draw the new points
+        //         render(); 
+                
+        //     } catch (error) {
+        //         console.error("Backend not connected yet:", error);
+        //     }
+        // }
+        //async function fetchLivePoints() {
+         //   try {
+          //      const response = await fetch('http://localhost:3000/api/points');
+          //      const liveData = await response.json();
+                
+          //      console.log("SUCCESS! Here is the data from PostgreSQL:", liveData);
+          //      toast("Connected to PostgreSQL Database!");
+                
+                // Map the database objects into the exact array format your frontend expects
+          //      db.points = liveData.map(dbItem => [
+          //          dbItem.point_name,
+           //         dbItem.location || 'Location data coming soon...',
+           //         dbItem.description || 'Description coming soon...',
+           //         ['Live DB Connection'], // Temporary placeholder for related diseases
+           //         'Data successfully loaded from PostgreSQL!' // Temporary notes
+           //     ]);
+                
+                // Save the new db variable to local storage and refresh the screen
+                // save();
+           //     render(); 
+                
+          //  } catch (error) {
+          //      console.error("Backend not connected yet:", error);
+         //   }
+      //  }
+        // Fetch Diseases from Database
+       // async function fetchLiveDiseases() {
+          //  try {
+            //    const response = await fetch('http://localhost:3000/api/diseases');
+             //   const liveData = await response.json();
+                
+                // Map backend data to the exact [Name, [Point Indices]] array format
+            //    db.diseases = liveData.map(item => {
+                    // Filter out nulls (if a disease has no points yet) and subtract 1 to fix the 0-index offset
+            //        let indices = (item.point_ids || [])
+            //            .filter(id => id !== null)
+            //            .map(id => id - 1); 
+                        
+            //        return [item.disease_name, indices];
+            //    });
+                
+            //    render(); 
+           // } catch (error) {
+            //    console.error("Diseases API not connected:", error);
+           // }
+       // }
+
+        // Fetch Quizzes from Database
+        //async function fetchLiveQuizzes() {
+         //   try {
+          //      const response = await fetch('http://localhost:3000/api/quizzes');
+           //     const liveData = await response.json();
+                
+                // Map backend data to the {q, o, a} object format
+           //     db.quizzes = liveData.map(item => ({
+            //        q: item.question,
+            //        o: [item.option_a, item.option_b, item.option_c, item.option_d], // Adjust based on your DB columns
+            //        a: item.correct_answer
+            //    }));
+                
+            //    render(); 
+           // } catch (error) {
+           //     console.error("Quizzes API not connected:", error);
+           // }
+       // }
+
+        // Run the fetch function when the app loads
+        //fetchLivePoints();
+        //fetchLiveDiseases();
+        //fetchLiveQuizzes();
+        // -------------------------------------
+        async function fetchDatabase() {
+            try {
+                // 1. Fetch Points
+                // const resPoints = await fetch('http://localhost:3000/api/points');
+                const resPoints = await fetch('https://aurilearn-backend.onrender.com/api/points');
+                if (!resPoints.ok) throw new Error(`Points API returned status ${resPoints.status}`);
+                const livePoints = await resPoints.json();
+                
+                db.points = livePoints.map(p => [
+                    p.point_name,
+                    p.location || 'Location data coming soon...',
+                    p.description || 'Description coming soon...',
+                    p.related_disease ? p.related_disease.split(',') : [],
+                    p.student_notes || 'No notes added yet.'
+                ]);
+
+                // 2. Fetch Diseases
+                // const resDiseases = await fetch('http://localhost:3000/api/diseases');
+                const resDiseases = await fetch('https://aurilearn-backend.onrender.com/api/diseases');
+                if (!resDiseases.ok) throw new Error(`Diseases API returned status ${resDiseases.status}`);
+                const liveDiseases = await resDiseases.json();
+                
+                db.diseases = liveDiseases.map(d => {
+                    let indices = (d.point_ids || [])
+                        .filter(id => id !== null)
+                        .map(id => id - 1); 
+                    // Add the description to the array (d[2])
+                    return [d.disease_name, indices, d.description || 'Description coming soon...'];
+                });
+
+                // 3. Fetch Quizzes
+                // const resQuizzes = await fetch('http://localhost:3000/api/quizzes');
+                const resQuizzes = await fetch('https://aurilearn-backend.onrender.com/api/quizzes');
+                if (!resQuizzes.ok) throw new Error(`Quizzes API returned status ${resQuizzes.status}`);
+                const liveQuizzes = await resQuizzes.json();
+                
+                db.quizzes = liveQuizzes.map(q => ({
+                    q: q.question,
+                    o: [q.option_a, q.option_b, q.option_c, q.option_d],
+                    a: parseInt(q.correct_answer)
+                }));
+
+                render();
+                console.log("Database connected successfully!");
+            } catch (err) {
+                console.error("Database connection failed:", err.message);
+                toast("Failed to load live data. Check server logs.");
+            }
+        }
+
+        window.addEventListener('hashchange', render);
+        
+        // Trigger the database fetch, which will call render() once finished
+        fetchDatabase();
+    </script>
+</body>
+</html>
